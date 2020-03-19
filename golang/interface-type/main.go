@@ -15,12 +15,17 @@ type Data2 struct {
 }
 
 func main() {
+	var datatype Data
 	data := getData()
+	//datatype=data <- will occur error
 	assertedData := data.(Data)
 	fmt.Println(reflect.TypeOf(assertedData))
-	switch data.(type) {
+	switch v := data.(type) {
 	case Data:
 		fmt.Println("this is Data")
+		datatype = v
+		fmt.Println(datatype)
+		break
 	case Data2:
 		fmt.Println("this is Data2")
 	default:
